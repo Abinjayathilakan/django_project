@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .logout-btn {
+          background-color: yellow;
+          color: white; /* Updated text color to white */
+          border-color: #ffc107;
+          margin-right: 5px;
+
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .messages {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .messages.success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .messages.error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        body {
+            background-color: skyblue;
+        }
+
+        .navbar {
+          background-color: skyblue; /* Updated navbar color to skyblue */
+      }
+
+        .nav-link {
+            color: black;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            margin-right: 30px;
+        }
+
+        .nav-link:hover {
+            color: white;
+            background-color: black;
+        }
+
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .profile-card {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+            margin-top: 150px; /* Added margin-top to push the card down below the navbar */
+        }
+
+        .profile-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .profile-card h2 {
+            margin-bottom: 0;
+        }
+
+        .content {
+            margin-top: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .imgcontainer {
+            margin-top: 20px;
+            text-align: center;
+        }
+   
+      </style>
+
+    {% load static %}
+</head>
+
+<body>
+  <div>
+    {% for message in messages %}
+      <h5>
+        <div clas="alert alert-danger mt-5">
+          {{ message }}
+        </div>
+      </h5>
+    {% endfor %}
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav>
+              <li class="nav-item">
+                <a class="nav-link rounded" href="{% url 'form' %}">LOGOUT</a>
+                </li>
+            </ul>
+                </div>
+                </nav>
+                <center>
+                <form method="post">
+                {% csrf_token %}
+                <table>
+                <div class="content">
+                <p align='center'>Please select an action:</p>
+                <div class="imgcontainer">
+                <a href="{% url 'editdb' %}"><img src="{% static 'images/images.jpeg' %}"></a><br><h2>Edit Profile</h2>
+                </div>
+                <div class="imgcontainer">
+                <a href="{% url 'teacher_profile' %}"><img src="{% static 'images/avatar2.jpeg' %}"></a><br><h2>See
+                Profile</h2>
+                </div>
+                </div>
+                </table>
+                </form>
+                </center>
+                
+                </body>
+                </html>
+                
+                
+                
+                
+
+
+
+
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+
+  
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+  
+    input {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+  
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  
+    .messages {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+  
+    .messages.success {
+      background-color: #d4edda;
+      color: #155724;
+    }
+  
+    .messages.error {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+    body{
+        background-color:skyblue;
+    }
+    .navbar {
+      background-color: white;
+  }
+  .nav-link {
+    color: black;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    margin-right: 30px;
+}
+
+.nav-link:hover {
+    color: white;
+    background-color: black;
+}
+  </style>
+  {% load static %}
+  <div>
+    {% for message in messages %}
+      <h5>
+        <div clas="alert alert-danger mt-5">
+          {{ message }}
+        </div>
+      </h5>
+    {% endfor %}
+  </div>
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+           
+            <li class="nav-item">
+                <a class="nav-link rounded" href="{% url 'form' %}">LOGOUT</a>
+            </li>
+        </ul>
+  <center>
+    <form method="post">
+      {% csrf_token %}
+      <table>
+  <div class="content">
+ 
+    <p align='center'>Please select an action:</p>
+      <div class="imgcontainer">
+        
+        <a href="#"><img src="{% static 'images/images.jpeg' %}"></a><br><h2>Edit Profile</h2>
+      </div>
+      <div class="imgcontainer">
+        
+        <a href="{% url 'teacher_profile' %}"><img src="{% static 'images/avatar2.jpeg' %}"></a><br><h2>See Profile</h2>
+      </div>
+      
+     
+   
+  </div>
+</table>
+</form>
+</center>
+</body>
+</html> {% endcomment %}

@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+      .table {
+          border-collapse: collapse;
+      }
+      
+      .table th, .table td {
+          padding: 0.5rem;
+          text-align: center;
+          vertical-align: middle;
+          border: 1px solid #dee2e6;
+      }
+      
+      .table th {
+          background-color: #f8f9fa;
+          font-weight: 500;
+      }
+      
+      .table td {
+          font-weight: 400;
+      }
+      .btn-edit {
+        background-color: #ffc107;
+        color: white;
+        border-color: #ffc107;
+        margin-right: 5px;
+    }
+    
+    .btn-edit:hover {
+        background-color: #e0a800;
+        border-color: #e0a800;
+    }
+    
+    .btn-delete {
+        background-color: #dc3545;
+        color: white;
+        border-color: #dc3545;
+    }
+    
+    .btn-delete:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
+
+   
+    
+  </style>
+  {% load static %}
+
+</head>
+
+<h1>STUDENT DETAILS !!!</h1>
+<table class="table" >
+    <thead>
+      <tr>
+
+        <th>STUDENT NAME</th>
+        <th>ADDRESS</th> 
+        <th >AGE</th>
+        <th>JOINING DATE</th>
+        <th>COURSE</th>
+        <th>COURSE FEE</th>
+        <th>ACTION </th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for s in students %}
+      <tr>
+        
+        <td>{{s.student_name}}</a> </td>
+        <td>{{s.student_address}}</td>
+        <td>{{s.student_age}}</td>
+        <td>{{s.joining_date}}</td>
+
+        <td>{{s.course.course_name}}</td>
+        <td>{{s.course.fee}}</td>
+        
+        <td><a href="{% url 'editpage' s.id %}" class="btn btn-edit">Edit</a><br><br>
+        <a href="{% url 'deletepage' s.id %}" class="btn btn-delete">delete</a><br><br> 
+          
+        
+      </tr>
+      {% endfor %}
+     
+    </tbody>
+  </table>
+  {% endblock %}

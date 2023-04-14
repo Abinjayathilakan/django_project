@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  body{
+    background-color:yellow;
+  }
+  .imgcontainer {
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    width: 49%;
+    padding: 10px;
+  }
+
+  .imgcontainer img {
+    max-width: 100%;
+    height: auto;
+    width: 200px; /* Set desired image width */
+    height: 200px; /* Set desired image height */
+    object-fit: cover; /* Maintain aspect ratio and cover container */
+  }
+
+  .imgcontainer h2 {
+    margin-top: 10px;
+  }
+
+  .clear {
+    clear: both;
+  }
+</style>
+{% load static%}
+
+<div class="content">
+  <h2 align='center'>Welcome, Admin!</h2>
+  <p align='center'>Please select an action:</p>
+  <div class="imgcontainer">
+    <a href="{% url 'add_course' %}"><img src="{% static 'images/avatar3.jpeg' %}"></a>
+    <h2>Add Course</h2>
+  </div>
+  
+  <div class="imgcontainer">
+    <a href="{% url 'addstudents' %}"><img src="{% static 'images/download.jpeg' %}"></a>
+    <h2>Add Students</h2>
+  </div>
+
+  <div class="imgcontainer">
+    <a href="{% url 'show_student' %}"><img src="{% static 'images/download.png' %}"></a>
+    <h2>Show Student</h2>
+  </div>
+
+  <div class="imgcontainer">
+    <a href="{% url 'show_teacher' %}"><img src="{% static 'images/avartar1.jpeg' %}"></a>
+    <h2>Show Teacher</h2>
+  </div>
+
+  <div class="clear"></div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+      .table {
+          border-collapse: collapse;
+      }
+      
+      .table th, .table td {
+          padding: 0.5rem;
+          text-align: center;
+          vertical-align: middle;
+          border: 1px solid #dee2e6;
+      }
+      
+      .table th {
+          background-color: #f8f9fa;
+          font-weight: 500;
+      }
+      
+      .table td {
+          font-weight: 400;
+      }
+      .btn-edit {
+        background-color: #ffc107;
+        color: white;
+        border-color: #ffc107;
+        margin-right: 5px;
+    }
+    
+    .btn-edit:hover {
+        background-color: #e0a800;
+        border-color: #e0a800;
+    }
+    
+    .btn-delete {
+        background-color: #dc3545;
+        color: white;
+        border-color: #dc3545;
+    }
+    
+    .btn-delete:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
+
+   
+    
+  </style>
+  {% load static %}
+
+</head>
+
+<h1>TEACHER DETAILS !!!</h1>
+<table class="table" >
+    <thead>
+      <tr>
+        <th>USERNAME </th>
+        <th>FIRST NAME </th>
+        <th>LAST NAME </th>
+        <th>EMAIL </th>
+
+        <th>STUDENT ADDRESS</th>
+         
+        <th >AGE</th>
+    
+        <th>NUMBER </th>
+        
+       
+      
+        
+      </tr>
+    </thead>
+    <tbody>
+        {% for t in teach %}
+      <tr>
+        <td>{{t.user.username}}</td>
+        <td>{{t.user.first_name}}</td>
+        <td>{{t.user.last_name}}</td>
+        <td>{{t.user.email}}</td> 
+        <td>{{t.address}}</a> </td>
+        <td>{{t.age}}</td>
+        <td>{{t.number}}</td>
+
+        
+        
+       
+       
+
+     
+
+        {% comment %} <td>{{s.course.course_name}}</td>
+        <td>{{s.course.fee}}</td> {% endcomment %}
+        
+        {% comment %} <td><a href="{% url 'editpage' s.id %}" class="btn btn-edit">Edit</a><br><br>
+        <a href="{% url 'deletepage' s.id %}" class="btn btn-delete">delete</a><br><br>  {% endcomment %}
+          
+        
+      </tr>
+      {% endfor %}
+     
+    </tbody>
+  </table>
+  {% endblock %}

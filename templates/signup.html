@@ -1,0 +1,340 @@
+{% comment %} <!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form validation in HTML & CSS | CodingNepal</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+
+   
+    .navbar{
+        background-color: white;
+    }
+    .nav-link {
+        color: black; /* Set desired color */
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        text-decoration: none;
+        margin-top: 10px; /* Add margin to push it down */
+        padding: 10px 15px; /* Add padding for spacing */
+        border-radius: 50px; /* Set border radius to create a round box */
+        background-color: #f2f2f2; /* Set background color */
+        display: inline-block; /* Set display property to inline-block to wrap content */
+    }
+    
+    
+    .nav-link:hover{
+        color: white;
+        background-color: black;
+    }
+
+    .nav-link {
+        position: fixed;
+        top: 0;
+        right: 0;
+        margin-top: 5em; /* Add margin-top to set it down */
+        margin-right: 20rem; /* Add margin-right to adjust horizontal position */
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      
+      
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #5372F0;
+}
+::selection{
+  color: #fff;
+  background: #5372F0;
+}
+.wrapper{
+  width: 380px;
+  padding: 40px 30px 50px 30px;
+  background: #fff;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 10px 10px 15px rgba(0,0,0,0.1);
+}
+.wrapper header{
+  font-size: 35px;
+  font-weight: 600;
+}
+.wrapper form{
+  margin: 40px 0;
+}
+form .field{
+  width: 100%;
+  margin-bottom: 20px;
+}
+form .field.shake{
+  animation: shake 0.3s ease-in-out;
+}
+@keyframes shake {
+  0%, 100%{
+    margin-left: 0px;
+  }
+  20%, 80%{
+    margin-left: -12px;
+  }
+  40%, 60%{
+    margin-left: 12px;
+  }
+}
+form .field .input-area{
+  height: 50px;
+  width: 100%;
+  position: relative;
+}
+form input{
+  width: 100%;
+  height: 100%;
+  outline: none;
+  padding: 0 45px;
+  font-size: 18px;
+  background: none;
+  caret-color: #5372F0;
+  border-radius: 5px;
+  border: 1px solid #bfbfbf;
+  border-bottom-width: 2px;
+  transition: all 0.2s ease;
+}
+form .field input:focus,
+form .field.valid input{
+  border-color: #5372F0;
+}
+form .field.shake input,
+form .field.error input{
+  border-color: #dc3545;
+}
+.field .input-area i{
+  position: absolute;
+  top: 50%;
+  font-size: 18px;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+.input-area .icon{
+  left: 15px;
+  color: #bfbfbf;
+  transition: color 0.2s ease;
+}
+.input-area .error-icon{
+  right: 15px;
+  color: #dc3545;
+}
+form input:focus ~ .icon,
+form .field.valid .icon{
+  color: #5372F0;
+}
+form .field.shake input:focus ~ .icon,
+form .field.error input:focus ~ .icon{
+  color: #bfbfbf;
+}
+form input::placeholder{
+  color: #bfbfbf;
+  font-size: 17px;
+}
+form .field .error-txt{
+  color: #dc3545;
+  text-align: left;
+  margin-top: 5px;
+}
+form .field .error{
+  display: none;
+}
+form .field.shake .error,
+form .field.error .error{
+  display: block;
+}
+form .pass-txt{
+  text-align: left;
+  margin-top: -10px;
+}
+.wrapper a{
+  color: #5372F0;
+  text-decoration: none;
+}
+.wrapper a:hover{
+  text-decoration: underline;
+}
+form input[type="submit"]{
+  height: 50px;
+  margin-top: 30px;
+  color: #fff;
+  padding: 0;
+  border: none;
+  background: #5372F0;
+  cursor: pointer;
+  border-bottom: 2px solid rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+form input[type="submit"]:hover{
+  background: #2c52ed;
+}
+
+
+  </style>
+</head>
+<body>
+  
+  <div class="wrapper">
+    
+    <form action="#" method="post">
+        {% csrf_token %}
+        <header>Login Form</header>
+     
+        <div class="input-area">
+          <input type="text" name="fname" placeholder="First name" required ><br><br>
+          
+        </div>
+        <div class="input-area">
+            <input type="text" name="lname" placeholder="Last name" required ><br><br>
+          </div>
+
+          <div class="input-area">
+            <input type="text" name="u_name" placeholder="username" required ><br><br>
+          </div>
+
+          <div class="input-area">
+            <input type="password" name="u_name" placeholder="Password" required ><br><br>
+          </div>
+
+        <div class="input-area">
+          <input type="password" name="c_password" placeholder="Confirm Password" required > <br><br> 
+      </div>
+
+      <div class="input-area">
+        <input type="email" name="mail" placeholder="Email" required ><br><br>
+      </div>
+
+      <div class="input-area">
+        <input type="text" name="address" placeholder="Enter Address" required ><br><br>
+      </div>
+
+      <div class="input-area">
+        <input type="number" name="age" placeholder="Enter age" required ><br><br>
+      </div>
+
+      <div class="input-area">
+        <input type="number" name="number" placeholder="Contact number" required ><br><br>
+      </div>
+
+      <div class="input-area">
+        <label>Upload Your photo</label>
+      <input type="file" id="file" name="file" class="form-control mt-3" accept="image/*" required><br><br>
+      </div>
+
+      <div class="input-area">
+        <label>Select Course</label><br>
+        <select class="form-control " name="Qualification" required style="width:320px;height:30px">
+          <option value="" disabled selected>Select qualifiction</option>
+          <option value="bca">BCA</option>
+          <option value="bba">BBA</option>
+          <option value="bcom">BCOM</option>
+        </select>
+      </div>
+      <input type="submit" value="Submit">
+    </form>
+    
+  </div>
+  
+  
+
+  <script src="script.js"></script>
+
+</body>
+</html> {% endcomment %}
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body>
+  <div>
+    {% for message in messages %}
+      <h5>
+        <div clas="alert alert-danger mt-5">
+          {{ message }}
+        </div>
+      </h5>
+    {% endfor %}
+  </div>
+    <form action="add_teacherdb" enctype="multipart/form-data"  method="POST" style="background-color: skyblue;">
+        {% csrf_token %}
+        <center>
+            <h1 style="color:green;">Teacher Registration</h1>
+           
+            <input class="form-control" type="text" id="f_name" name="fname" style="width: 500px"
+                placeholder="First Name" required><br><br>
+            
+            <input class="form-control" type="text" id="l_name" name="lname" style="width: 500px"
+                placeholder="Last Name" required><br><br>
+           
+            <input class="form-control" type="text" id="u_name" name="uname" style="width: 500px" placeholder="Username"
+                required><br><br>
+            
+      
+            <input class="form-control" type="password" id="password" name="password" style="width: 500px"
+                placeholder="Password" required><br><br>
+            
+            <input class="form-control" type="password" id="c_password" name="c_password" style="width: 500px"
+                placeholder="Confirm Password" required><br><br>
+      
+            <input class="form-control" type="text" id="address" name="address" style="width: 500px" placeholder="Enter Address" required><br><br>
+          
+            <input class="form-control" type="number" id="age" name="age" style="width: 500px" placeholder="Enter age" required><br><br>
+       
+            <input class="form-control" type="email" id="mail" name="mail" style="width: 500px" placeholder="Email" required><br><br>
+            
+            <input class="form-control" type="number" id="number" name="number" style="width: 500px" placeholder="Contact number" required><br><br>
+            <div class="input-area">
+                
+              <input type="file" id="file" name="file" class="form-control mt-3" accept="image/*" style="width: 500px" required><br><br>
+              </div>
+        
+              <div class="input-area">
+                <label for="number">Course</label>
+                <select name="sel">
+                  {% for c in course %}
+                  <option value="{{c.id}}">{{c.course_name}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              
+
+            <button type="submit" class="btn btn-warning btn-lg" style="margin-top: 20px;">Submit</button>
+        </div>
+            <p style="margin-top: 20px;">Already have an account? <a href="#">Login</a></p>
+        </center>
+    </form>
+</body>
+
+</html> 
